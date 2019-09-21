@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { tap } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,16 @@ export class AuthService {
       password: password
     }
 
-    return this.http.post(`${this.API_URL}/auth/register`, data);
+    console.log("[INFO]: Calling backend");
+    var temp = this.http.post(`${this.API_URL}/auth/register`, data).pipe(
+      tap(_ => console.log("user created")),
+      catchError(err => of(console.log(`Error: ${err}`)))
+    );
+
+    console.log("request submitted");
+    console.log(temp);
+
+    return temp;
   }
 
 }

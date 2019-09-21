@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "memori",
+  "private_key_id": "5c6f952e454cde2bc0a9b25025de0b2b0ad0ae50",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDEL9H67UNX5imx\nZxbnui51EgzzQmPt/ifOaLQCEzVyHsWUggiZd1kMVo/9AlyAHT1jX57OyoFbHU5X\nG3OggPfb5jM8dosIDmYJS0RZz029lGliyBSw2b6dI5gzoODvWaX8JE5sPerm/en6\nPf/JIaq5zrfIFjqwrfJwoOysgA2y7a+K8JXuIeNjMquG09HPmhI89mdWSDVKxeUT\n2OODOcVu5p8lQHS8xyoet6ChnJwq+7rk3NE0UrLwGFfK5jqhBxJp1fURM9shdnGg\n/2onWOGzYJ1Da32/IOa8Yasg4/PWBPLq4YhbuVji1i1yoPYdD1TUr5F8zs3g7jhK\n1cFsbXdzAgMBAAECggEAAwYiVvCkSpe4ycwR0tA7BMFFTinrpLtM/XCotvrOe+v/\nK1BWde3HLhpWzYAP+/DiGtovoPaxyBKWEV/8yBsPdvtqi8KKAb2dvgPufEc75rGs\nbteFq3TXwXqkecXqNwDrPuKHtkG9Zq0Vl66v9szcNvv5jOMm1Bqs83vPhMMpMuT8\nbVoqAR+xWcE0gMCu1f68ibtA3tH7no1XdUaMmkhTGxId4Bnu0cXwcbV5VbcLlWR9\njpmfST0OoFpBZzyQNTZB1xMyV8M1jVIgvKKggrHhmNGvz/57nOkl37OpEBDLu3Gu\niu1kR4uBsBMdC+IZuZM2nvHL0uvbFPxG1QgdNDH34QKBgQDlv07jtkM4QL1GdmRB\nuauVluz/gfQ+t4T82zlArtYGJhRp83LBlzJUzEr6UCRov3yraOxj8z6RwvbPmzkL\nZ3WUYP1Wdp+3N6TkVfiHTMFo3FomHWTbk5IPPocxFqBwU82xLLgAVVV+ADNWk979\nWy2j3wRE4mVpYnBtLfojev1RIQKBgQDamshAvP5v+TiM0fZG+FjfyZxzLC0plsTl\nXJDMpRoyvtFgbrdKufACu1H8pUGjnimK9oIslQBllM+nUS3abVws+0dYHsSiJyTJ\ndOskPXRMhke7GszpB2vW5WkWTYqQ1koutVns0bCgJ6ju3JvN15Chaybm4grzACdA\n1ZM0cMgyEwKBgQDi7N8jE/e5LFjHrFDCin3sNzLH/Lge6m20w2P9e7NyR1KKhCep\nB4pzL4YvT9FmlRyyweQbpTr8BjJ6RLtHhF0ivdn8+RYwhgmcbz4XhbzTsjJoy0e/\nijcOT5iA5/R4fo4AnkbwLVlQJyqOLWhnnxOpdLJmx6ebO9wIOw2C1gw3gQKBgQCq\nC4rIKPt22JMvn0eGjzp64dZMFMoQttH0ZFvShH9rh9lQvO7hNt/HEDVHZLk5cBd6\nnCRIT6NeYTJiQZh8d2MjLleh6VUlmXNZLhSXPSKRQEbd+Yv5nKc7I3rqOWkXH0nX\nKYSI3dgZzJ/xJjQgG5XKqpI5OQ4xViYynbADM9PWdwKBgQDjLRp/4L+qYRk8ksQ4\nyxZpaML8drTfHJ4YK09vH7QIv2wividUVHjulMIiPrWJit3PmmBk6AAJyue4F/Cr\nfzTN9wCV5tyRL6uEzSWvstHU2nFFUpfmblnNGY5oTAIqmbyOiQ0rj4dWJkO0FZL8\nqk0DhbPI3igq+ePgkL9VpjK1ew==\n-----END PRIVATE KEY-----\n",
+  "client_email": "memori-datastore@memori.iam.gserviceaccount.com",
+  "client_id": "113888118967966230805",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/memori-datastore%40memori.iam.gserviceaccount.com"
+}

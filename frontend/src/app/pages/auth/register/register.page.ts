@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../../services/auth.service';
 
@@ -10,14 +11,27 @@ import { AuthService } from '../../../services/auth.service';
 export class RegisterPage implements OnInit {
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
 
+  login(){
+    this.router.navigateByUrl("/login");
+  }
+
   register(form){
-    this.authService.register(form.value.name, form.value.email, form.value.password);
+    console.log("form submitted");
+    this.authService.register(form.value.name, form.value.email, form.value.password).subscribe(data => {
+      console.log(data);
+      this.router.navigateByUrl('/login');
+    },
+    error => {
+      console.log(error);
+    },
+    () => {    });
   }
 
 }
