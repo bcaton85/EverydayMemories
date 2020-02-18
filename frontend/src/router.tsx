@@ -10,9 +10,11 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { apps, flash, send } from 'ionicons/icons';
-import authStatus from './hooks/AuthStatus';
+import { flash } from 'ionicons/icons';
 import submit from './pages/Submit';
+import authStatus from './hooks/AuthStatus';
+import login from './pages/Login';
+import register from './pages/Register';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -33,31 +35,23 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const LoggedIn: React.FC = () => {
+const Router: React.FC = () => {
 
-    
+
+  var isLoggedIn: boolean = authStatus();
 
   return (
     <IonApp>
       <IonReactRouter>
-        <IonTabs>
-
-            <IonRouterOutlet>
+              <IonRouterOutlet>
                 <Route path="/submit" component={ submit } exact={true} />
-                <Route path="/" render={() => <Redirect to="/submit" />} exact={true} />
-            </IonRouterOutlet>
-
-            <IonTabBar slot="bottom">
-                <IonTabButton tab="tab1" href="/submit">
-                <IonIcon icon={flash} />
-                <IonLabel>Submit</IonLabel>
-                </IonTabButton>
-            </IonTabBar>
-        </IonTabs>
-        <Redirect to="/submit" />
+                <Route path="/login" component={  login }  exact={true} />
+                <Route path="/register" component={ register  } exact={true} />
+                <Route path="/" render={() => <Redirect to="/login" />} exact={true} />
+              </IonRouterOutlet>
       </IonReactRouter>
     </IonApp>
   )
 };
 
-export default LoggedIn;
+export default Router;

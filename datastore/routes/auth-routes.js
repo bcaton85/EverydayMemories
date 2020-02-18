@@ -1,18 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const { db } = require('../firestore');
-const { Datastore } = require('@google-cloud/datastore');
 
-router.post('/login', (req, res) => {
-	console.log(req);
-	console.log(res);
-	res.send("/login hit");
-});
+router.post('/userExists', async (req, res) => {
 
-router.post('/logout', (req, res) => {
-	console.log(req);
-	console.log(res);
-	res.send("/logout hit");
+	//console.log(req);
+
+	const email = req.body.email;
+	const password = req.body.password;
+
+	if(!email){
+		console.log('request rejected emal');
+		return res.status(400).send('Invalid request body');
+	}
+
+	if(!password){
+		console.log('request rejected emal');
+		return res.status(400).send('Invalid request body');
+	}
+
+
+	//TODO: Add in check for user exists
+	
+	res.status(200).send({status: "success"});
 });
 
 router.post('/register', async (req, res) => {
@@ -21,7 +30,6 @@ router.post('/register', async (req, res) => {
 	const email = req.body.email;
 	const password = req.body.password;
 
-	// Sanitation
 	if(!name){
 		return res.status(400).send('Invalid request body');
 	}
@@ -35,8 +43,8 @@ router.post('/register', async (req, res) => {
 	}
 
 	const db = new Datastore({
-		projectId: 'memori',
-		keyFilename: './memori-5c6f952e454c.json'
+		projectId: 'memories-263716',
+		keyFilename: './memories-sa.json'
 	});
 
 	const key = db.key('User');
@@ -66,10 +74,10 @@ router.post('/register', async (req, res) => {
 	}
 	catch(err){
 		console.log(`[ERROR]: ${err}`);
-		res.status(500);
+		res.status(500).send({status:"failure",message:"Error saving user"});
 	}
 
-	res.status(201);
+	res.status(201).send({status:"success"});
 });
 
 module.exports = router;

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
 import {
-    IonApp, 
     IonHeader,
     IonTitle,
     IonToolbar,
@@ -13,9 +11,16 @@ import {
     IonLabel,
     IonButton
   } from '@ionic/react';
-import Submit from './Submit';
 import authStatus from '../hooks/AuthStatus';
-import LoggedIn from '../LoggedIn';
+import LoggedIn from '../router';
+import styled from 'styled-components';
+import { animated, useSpring, config } from 'react-spring';
+
+const Content = styled(animated.div)`
+
+`
+
+
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -30,41 +35,52 @@ const Login: React.FC = () => {
 
 
     const submit = async () => {
+        console.log("submitted");
+        const body = {
+            email: email,
+            password: password
+        };
 
-        // TODO: make call to backend
+        const params = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        };
 
-        var loggedIn: boolean = true;
+        console.log(params);
 
-        if(loggedIn){
-            ReactDOM.render(<LoggedIn />, document.getElementById('root'));
-        }
+        fetch('http://localhost:3000/auth/userExists', params).then( res => {
+            res.json().then( data => {
+                if(data.status === "success"){
+                    // TOOO: route back to main page
+                }
+                else {
+                    // TODO: implement error handling
+                }
+            })
+        });
     }
 
     return (
         <>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>
-                        Login
-                    </IonTitle>
-                </IonToolbar>
-            </IonHeader>
-            <IonContent>
+            <Content>
                 <form onSubmit={ e => { e.preventDefault(); submit()}}>
                     <IonList>
                         <IonItem>
                             <IonLabel>Email</IonLabel>
-                            <IonInput type="email" name="email" onChange={ e => setEmail("")  }/>
+                            <IonInput type="email" name="email" onIonChange={ (e: any) => setEmail(e.target.value) }/>
                         </IonItem>
                         <IonItem>
                             <IonLabel>Password</IonLabel>
-                            <IonInput type="password" name="password" onChange={ e => setPassword("")  }/>
+                            <IonInput type="password" name="password" onIonChange={ (e: any) => setPassword(e.target.value) }/>
                         </IonItem>
                         <IonButton type="submit">Submit</IonButton>
                     </IonList>
                 </form>
                 <a href="/register">Register</a>
-            </IonContent>
+            </Content>
         </>
     )
 };

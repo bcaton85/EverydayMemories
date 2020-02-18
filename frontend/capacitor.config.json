@@ -1,0 +1,8 @@
+{
+  "appId": "com.caton.memories",
+  "appName": "Memories",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "public",
+  "cordova": {}
+}

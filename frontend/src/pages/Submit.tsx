@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    IonLabel,
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -8,8 +7,7 @@ import {
     IonList,
     IonItem,
     IonTextarea,
-    IonButton,
-    IonInput
+    IonButton
   } from '@ionic/react';
 
 const Submit: React.FC = () => {

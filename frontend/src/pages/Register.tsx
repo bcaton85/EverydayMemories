@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
-    IonApp, 
     IonHeader,
     IonTitle,
     IonToolbar,
@@ -13,7 +12,7 @@ import {
     IonButton
   } from '@ionic/react';
 import authStatus from '../hooks/AuthStatus';
-import LoggedIn from '../LoggedIn';
+import LoggedIn from '../router';
 
 const Register: React.FC = () => {
     
@@ -28,7 +27,7 @@ const Register: React.FC = () => {
     }
 
     const submit = async () => {
-
+        
     }
 
     return (
