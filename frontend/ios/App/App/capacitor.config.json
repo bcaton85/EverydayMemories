@@ -1,8 +1,0 @@
-{
-  "appId": "com.example.app",
-  "appName": "Memories",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "public",
-  "cordova": {}
-}

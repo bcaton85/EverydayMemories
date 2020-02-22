@@ -1,8 +1,8 @@
 {
-  "appId": "com.caton.memories",
-  "appName": "Memories",
+  "appId": "io.ionic.starter",
+  "appName": "webview",
   "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": "public",
+  "webDir": "www",
   "cordova": {}
 }
