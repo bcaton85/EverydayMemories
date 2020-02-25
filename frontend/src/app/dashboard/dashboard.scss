@@ -1,0 +1,18 @@
+ion-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20% 1fr;
+    grid-template-areas: "header" 
+                        "mainContent";
+
+    #dashboard-header {
+        grid-area: header;
+        display: flex;
+    }
+
+    #dashboard-content {
+        grid-area: mainContent;
+        display: flex;
+    }
+}
+

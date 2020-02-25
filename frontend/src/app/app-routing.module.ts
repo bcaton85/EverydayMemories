@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {Submission} from './submission/submission';
 import {Dashboard} from './dashboard/dashboard';
+import {AuthGuardService as AuthGuard} from './auth/auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -10,6 +11,8 @@ const routes: Routes = [
   { 
     path: 'dashboard', 
     component: Dashboard,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       { path: 'submit', loadChildren: () => import('./submission/submission.module').then( m => m.SubmissionModule) }
     ]

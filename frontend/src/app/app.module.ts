@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import {Dashboard} from './dashboard/dashboard';
+import {AuthGuardService} from './auth/auth-guard.service';
+import {AuthService} from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import {Dashboard} from './dashboard/dashboard';
     AppRoutingModule
   ],
   providers: [
+    AuthGuardService,
+    AuthService,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
