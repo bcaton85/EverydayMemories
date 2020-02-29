@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Submit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="submit()">
+    <ion-item>
+        <ion-label>Message</ion-label>
+        <ion-textarea aria-placeholder="Enter message here..."></ion-textarea>
+    </ion-item>
+    <button ion-button type="submit" block>Submit   </button>
+</form>
+</ion-content>
