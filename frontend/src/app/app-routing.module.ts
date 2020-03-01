@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import {Dashboard} from './dashboard/dashboard';
-import {AuthGuardService as AuthGuard} from './auth/auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', loadChildren: './login/login.module#LoginModule' },
-  { path: 'register', loadChildren: './register/register.module#RegisterModule' },
-  { 
-    path: 'dashboard', 
-    component: Dashboard,
-    canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
-    children: [
-      { path: 'submit', loadChildren: './submission/submission.module#SubmissionModule' }
-    ]
-  }
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'layout',
+    loadChildren: () => import('./pages/layout/layout.module').then( m => m.LayoutPageModule)
+  },
 ];
 
 @NgModule({
@@ -24,4 +23,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,7 +1,0 @@
-{
-  "name": "webview-blank",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
