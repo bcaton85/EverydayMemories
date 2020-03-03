@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "memories-263716",
+    "private_key_id": "39e9dd4df47767eeab22c516b6e994888fb601de",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7oZIKN/qsTBnV\nkbFz1BoRmysXDGxkFsRbS46r/EnjayLE0yhUS9FO5AEGVZzXdW2a+WQs9U28ijMB\ni5COT4imvz5zRTPxfhmANPnBewWJbOp5immMQVJXB+PooyenxKW7vBP/6F1e3MNw\nFvGAwx0eEJigJt3kQv89+H1706IU6tOWzBS4TnAG402hOu9jiE0pixMXcv4grSM3\nuLBS5WRIsyWSl2Mp1UmVs+DVb6IDhAPs+uVq+95XKuQRr9Mw9b9nC/pKV0GpLU1d\n1fenAzYh+oVb4oS8rApMbkrtgbCAJZ+KdOwGAsP8njDN6S3ieBOrCAITkzl75YJR\nYpMhGuxBAgMBAAECgf9ff2ChKtS/FQyhEsJKvc124I8R8BTK7HuMK+y1xHam9USB\nASgpn10s1gdfffuR/gaHNh+ycjfamkxToQE2LWzT0cqrSLGjXBcGle/4dfDffTvq\nGHSYGjcabL2nDkOEtCXWY2eafF3phltClardanFLeA72lFGjeCYJGIxlldWM5wg/\n+8wMDZ2BlyOLP2Ksu6FpI5m3u1YsYfoSCD2yW7Ck8xAUhmllkb7xchL9y1JP+TS3\ns+NCYPbLKGfNk2EFYwN4B1hNvpkOsIFflyFsu+Zy/Fle4AN5KG+SoTuaapP2FhZ5\netJSlCHzjkY04acLWRIWaw+haEpDfKQlk5DGigECgYEA7+KpNMFI4AOlDgI4ebo1\nIEI80PHLYByKw8vZLRsTQq6OyqMl9E8VTnau/eUFIwvfgcdvFZiJo3K81syw+lnP\n2BweH7KADgGFFAr0WjuX3XQU3kr3Bimo7HNp9t8fzI9KB5Z/Z69YnEEGxeGtRwpM\nhiMq3p0Q39bO9cdBZ09t/gECgYEAyDxJVzOUDlChdZpCa/2D0Sssd6kpZgXp5fHj\nQou1/OGM6JWRUI36XeLu3zHhJbMgOHY4Att4VIZvcPcOg6zYKq9DUVQ4CTgF6stu\n0rbeGyLW2lbvGVHO1JN6KkcBal4CFgHDgnSEHWuWe7Dkxzd1lo9oMJk7AggCUjG3\n4sUJbkECgYEAiV8JetZ8/xvXN3B6GutRZQnJffYZew6dQIbJ9ZSdsP/5cX2ATKnF\nD8vTZj3ydSFlexJUQM+7ckhQb8mER7mK1r0zWv+DaYHhTZsAV3PtAbpqAOp5D6Rn\nwhBNzDv2H9SmljXO+/dkDQcH8+XKrvXs4Jve/uB/O0/t8L2MbLcFzAECgYEAl82E\nuJSE2XltfvANDTvsdGZr1ugrV4qCMe75IRk0Rlxk7Gt/+Hc66XTDLfjtvRwZAFU3\nz4q9pi8pS5YxrcgbNfkbawwTU4HikofaI+u5ZQ87ndoseKCZ0nVgN68PNqnAoRiD\nNWLKSlenhWytdQ7pmdRs4/M3VinmQJQq2cQRi0ECgYEAiOvSp2a7jIgVRJ9Q2AZp\n32LvQ0sVJhaQM4m93ftKxtj6FCUg8vyc0aaGGvQ57tEUZErFMHt7uW/eNbX4GrlT\nyq0+4op45VL0zBZcxMOxvpgBxuYBYvaXDuOZTiEM9X1OciHqZNSAyeu2wY8j7zYE\nJM88mI3iOmhJ+3zAa8VDeaU=\n-----END PRIVATE KEY-----\n",
+    "client_email": "datastore-sa@memories-263716.iam.gserviceaccount.com",
+    "client_id": "107575772072752201062",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/datastore-sa%40memories-263716.iam.gserviceaccount.com"
+  }
+  
