@@ -2,7 +2,7 @@
   <ion-grid>
     <ion-row>
       <ion-col size="4" offset="4" >
-        <form id="login-form" (ngSubmit)="login()">
+        <form #loginForm="ngForm" novalidate>
           <ion-header>
             <ion-title>
               Login
@@ -10,13 +10,13 @@
           </ion-header>
           <ion-item>
               <ion-label>Email</ion-label>
-              <ion-input type="text" [(ngModel)]="user.email" name="email"></ion-input>
+              <ion-input type="text" [(ngModel)]="user.email" name="email" required></ion-input>
           </ion-item>
           <ion-item>
               <ion-label>Password</ion-label>
-              <ion-input type="text" [(ngModel)]="user.password" name="password"></ion-input>
+              <ion-input type="text" [(ngModel)]="user.password" name="password" required></ion-input>
           </ion-item>
-          <ion-button color="light" type="submit" block>Login</ion-button>
+          <ion-button color="light" type="submit" block (click)="login(loginForm)">Login</ion-button>
           <p>Not a member? <a [routerLink]="['/register']" >Sign up</a></p>
         </form>
       </ion-col>

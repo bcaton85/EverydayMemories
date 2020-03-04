@@ -5,8 +5,10 @@ services:
       context: ./frontend
     ports:
       - "3001:8100"
-  datastore:
+  backend-api:
     build:
       context: ./datastore
     ports:
       - "3000:3000"
+  
+  

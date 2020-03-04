@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { User } from '../interfaces/user';
+import { UserService } from '../../providers/user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,16 +11,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  private user = {}
+  user: User = {email:'',password:''};
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userSvc: UserService) { }
 
   ngOnInit() {
   }
 
-  login(){
-    console.log(this.user);
-    this.router.navigateByUrl('/layout/submit');
+  login(form: NgForm){
+    console.log(form);
+
+    // Sort circuiting prevents login from being called on invalid form
+    if(form.valid && this.userSvc.login(this.user.email, this.user.password) ){
+      this.router.navigateByUrl('/layout/submit');
+    }
   }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Memory } from '../interfaces/memory';
 
 @Component({
   selector: 'app-submit',
@@ -7,13 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubmitPage implements OnInit {
 
+  memory: Memory = {message: ''};
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  submit(){
-    console.log('submitted')
+  submit(form: NgForm){
+    console.log(form.valid);
   }
 
 }
