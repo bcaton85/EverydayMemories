@@ -22,8 +22,19 @@ export class LoginPage implements OnInit {
     console.log(form);
 
     // Sort circuiting prevents login from being called on invalid form
-    if(form.valid && this.userSvc.login(this.user.email, this.user.password) ){
-      this.router.navigateByUrl('/layout/submit');
+    if(form.valid ){
+
+      this.userSvc.login(this.user.email, this.user.password).subscribe( (response)=> {
+          console.log(response);
+
+          if(response.loggedIn){
+            console.log("login succeeded");
+            this.router.navigateByUrl('/layout/submit');
+          } else {
+            console.log(" login failed");
+          }
+        });
+
     }
   }
 

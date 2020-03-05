@@ -19,14 +19,9 @@ export class UserService {
     return true;
   }
 
-  login(email: String, password: String): boolean {
+  login(email: String, password: String): Observable<any> {
 
-    this.http.post(`${this.backendApi}/auth/login`,{email: email, password: password})
-      .pipe()
-      .subscribe( (response)=> {
-          console.log(response)
-        });
-
-    return true;
+    return this.http.post<any>(`${this.backendApi}/auth/login`,{email: email, password: password})
+      .pipe();
   }
 }

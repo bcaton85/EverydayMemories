@@ -24,6 +24,27 @@ router.post('/userExists', async (req, res) => {
 	res.status(200).send({status: "success"});
 });
 
+router.post('/login', async (req, res)=>{
+	const email = req.body.email;
+	const password = req.body.password;
+
+	if(!email){
+		return res.status(400).send('Invalid request body');
+	}
+
+	if(!password){
+		return res.status(400).send('Invalid request body');
+	}
+
+	let resContent = {
+		success: true,
+		loggedIn: false
+	}
+
+
+	res.status(200).send(resContent);
+});
+
 router.post('/register', async (req, res) => {
 
 	const name = req.body.name;
@@ -40,41 +61,6 @@ router.post('/register', async (req, res) => {
 
 	if(!password){
 		return res.status(400).send('Invalid request body');
-	}
-
-	const db = new Datastore({
-		projectId: 'memories-263716',
-		keyFilename: './memories-sa.json'
-	});
-
-	const key = db.key('User');
-
-	const entity = {
-		key: key,
-		data: [
-			{
-				name: 'name',
-				value: name
-			},
-			{
-				name: 'email',
-				value: email
-			},
-			{
-				name: 'password',
-				value: password
-			}
-		]
-	}
-
-	try {
-		console.log("[INFO]: Saving to cloud store");
-		await db.save(entity);
-		console.log(`[INFO]: User ${name} created`);
-	}
-	catch(err){
-		console.log(`[ERROR]: ${err}`);
-		res.status(500).send({status:"failure",message:"Error saving user"});
 	}
 
 	res.status(201).send({status:"success"});

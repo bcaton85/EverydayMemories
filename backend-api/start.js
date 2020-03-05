@@ -1,4 +1,4 @@
-var app = require('./server.js.js');
+var app = require('./server.js');
 var http = require('http');
 
 var PORT = '3000';
