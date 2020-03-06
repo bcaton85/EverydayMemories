@@ -2,13 +2,12 @@
 
 # dependencies
 /frontend/node_modules
-/datastore/node_modules
+/backend-api/node_modules
 /frontend/.pnp
 /frontend/.pnp.js
 
 # testing
 /frontend/coverage
-/datastore/memories-sa.json
 
 # production
 /frontend/build
