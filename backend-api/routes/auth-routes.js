@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
+
+var Users = require('../models/users.js');
 
 router.post('/userExists', async (req, res) => {
 
@@ -42,8 +43,28 @@ router.post('/login', async (req, res)=>{
 		loggedIn: false
 	}
 
+	// TODO: confirm this call is async
+	Users.find({email:email}, (err, dbRes)=>{
+		console.log(err);
+		console.log(dbRes);
+		if(err){
+			console.error("User not found...");
+			res.status(500).send();
+			return;
+		}
 
-	res.status(200).send(resContent);
+		if(dbRes.length == 0){
+			resContent.message = "Username not found";
+			res.status(404).send(resContent);
+			return;
+		}
+
+		if(password == dbRes[0].password){
+			resContent.loggedIn = true;
+		}
+
+		res.status(200).send(resContent);
+	});
 });
 
 router.post('/register', async (req, res) => {
