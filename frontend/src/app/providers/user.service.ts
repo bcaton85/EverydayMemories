@@ -24,4 +24,9 @@ export class UserService {
     return this.http.post<any>(`${this.backendApi}/auth/login`,{email: email, password: password})
       .pipe();
   }
+
+  register(email: String, password: String): Promise<any> {
+    return this.http.post<any>(`${this.backendApi}/auth/register`,{email: email, password: password})
+    .toPromise();
+  }
 }

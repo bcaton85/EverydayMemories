@@ -10,7 +10,7 @@ router.get('/', (req, res)=>{
 });
 
 router.use('/auth', authRouter);
-router.use('/sub',subRouter);
+router.use('/messages',subRouter);
 router.use('/healthcheck', healthcheckRouter);
 
 module.exports = router;

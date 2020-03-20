@@ -16,7 +16,7 @@
           </ion-header> 
           <ion-item>
               <ion-label>Message</ion-label>
-              <ion-textarea required name="message" [(ngModel)]="memory.message" aria-placeholder="Enter message here..."></ion-textarea>
+              <ion-textarea required name="message" [(ngModel)]="message.messageText" aria-placeholder="Enter message here..."></ion-textarea>
           </ion-item>
           <ion-button ion-button (click)="submit(submitForm)" block>Submit</ion-button>
       </form>

@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
       this.userSvc.login(this.user.email, this.user.password).subscribe( (response)=> {
           console.log(response);
 
-          if(response.loggedIn){
+          if(response.success){
             console.log("login succeeded");
             this.router.navigateByUrl('/layout/submit');
           } else {

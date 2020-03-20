@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Hold messages for:</ion-label>
+      <ion-select # (ionChange)="setHoldMessages()">
+        <ion-select-option value="never">Never</ion-select-option>
+        <ion-select-option value="monthly">Monthly</ion-select-option>
+        <ion-select-option value="yearly">Yearly</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

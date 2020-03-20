@@ -15,6 +15,14 @@ const routes: Routes = [
     path: 'layout',
     loadChildren: () => import('./pages/layout/layout.module').then( m => m.LayoutPageModule)
   },
+  {
+    path: 'messages',
+    loadChildren: () => import('./pages/messages/messages.module').then( m => m.MessagesPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+  },
 ];
 
 @NgModule({

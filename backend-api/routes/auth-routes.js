@@ -27,6 +27,7 @@ router.post('/userExists', async (req, res) => {
 });
 
 router.post('/login', async (req, res)=>{
+	console.log(req.body);
 	const email = req.body.email;
 	const password = req.body.password;
 
@@ -55,7 +56,8 @@ router.post('/login', async (req, res)=>{
 
 		if(dbRes.length == 0){
 			resContent.message = "Username not found";
-			res.status(404).send(resContent);
+			resContent.success = false;
+			res.status(200).send(resContent);
 			return;
 		}
 
@@ -68,14 +70,10 @@ router.post('/login', async (req, res)=>{
 });
 
 router.post('/register', async (req, res) => {
+	console.log(req.body);
 
-	const name = req.body.name;
 	const email = req.body.email;
 	const password = req.body.password;
-
-	if(!name){
-		return res.status(400).send('Invalid request body');
-	}
 
 	if(!email){
 		return res.status(400).send('Invalid request body');
@@ -85,7 +83,24 @@ router.post('/register', async (req, res) => {
 		return res.status(400).send('Invalid request body');
 	}
 
-	res.status(201).send({status:"success"});
+	Users.find({email:email}, (err, dbRes)=>{
+		// TODO: manage error
+
+		if(dbRes.length > 0){
+			res.status(403).send({success:false,message:"UserExists"});
+		}
+	});
+
+	// TODO: Encrypt and salt password
+
+	var user = new Users({email:email,password:password});
+	user.save(function(err,user){
+		if(err) {
+			//TODO: handle err
+		}
+	});
+
+	res.status(201).send({success:true});
 });
 
 module.exports = router;

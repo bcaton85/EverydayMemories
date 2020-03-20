@@ -16,6 +16,24 @@ const routes: Routes = [
             loadChildren: () => import('../submit/submit.module').then(m => m.SubmitPageModule)
           }
         ]
+      },
+      {
+        path:'messages',
+        children:[
+          {
+            path:'',
+            loadChildren: () => import('../messages/messages.module').then(m => m.MessagesPageModule)
+          }
+        ]
+      },
+      {
+        path:'settings',
+        children:[
+          {
+            path:'',
+            loadChildren: () => import('../settings/settings.module').then(m => m.SettingsPageModule)
+          }
+        ]
       }
     ]
   }
