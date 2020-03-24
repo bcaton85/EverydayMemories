@@ -8,8 +8,8 @@
   <ion-list>
     <ion-item>
       <ion-label>Hold messages for:</ion-label>
-      <ion-select # (ionChange)="setHoldMessages()">
-        <ion-select-option value="never">Never</ion-select-option>
+      <ion-select (ionChange)="setHoldMessages()">
+        <ion-select-option value="never">Weekly</ion-select-option>
         <ion-select-option value="monthly">Monthly</ion-select-option>
         <ion-select-option value="yearly">Yearly</ion-select-option>
       </ion-select>

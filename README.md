@@ -1,3 +1,3 @@
 # No Context
 
-App used for storing text and images of the small moments in life. Text and images stored cannot be viewed again until December 30th, 2020.
+Store text and images of the moments in life that are important to you. Those moments are held and can be viewed to reflect at the end of each month.
