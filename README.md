@@ -2,4 +2,4 @@
 
 ## Description
 
-Each day save something that makes you happy. Could be inside jokes, a good cup of coffee, or a moment with someone special. Text and images stored are only viewable at the end of each month or year, reminding us of the finer moments.
+Memories are made everyday, we just don't notice. Save text and images's of the the things that made you happy today to look back on in the future. This content is stored for the entire month and then given at once on a date of the following month. This time scan can also be configured for weekly or even yearly basis.
