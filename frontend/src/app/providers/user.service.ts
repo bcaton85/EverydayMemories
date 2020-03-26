@@ -19,10 +19,10 @@ export class UserService {
     return true;
   }
 
-  login(email: String, password: String): Observable<any> {
+  login(email: String, password: String): Promise<any> {
 
     return this.http.post<any>(`${this.backendApi}/auth/login`,{email: email, password: password})
-      .pipe();
+      .toPromise();
   }
 
   register(email: String, password: String): Promise<any> {

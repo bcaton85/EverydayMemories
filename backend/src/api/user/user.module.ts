@@ -6,6 +6,7 @@ import {UserSchema} from '../../schemas/User';
 
 @Module({
   imports: [ MongooseModule.forFeature([{name: 'User',schema: UserSchema}]) ],
+  exports: [ UserService ],
   controllers: [UserController],
   providers: [UserService]
 })

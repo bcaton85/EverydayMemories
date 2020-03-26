@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { User } from '../interfaces/user';
 import { UserService } from '../../providers/user.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -24,15 +25,21 @@ export class LoginPage implements OnInit {
     // Sort circuiting prevents login from being called on invalid form
     if(form.valid ){
 
-      this.userSvc.login(this.user.email, this.user.password).subscribe( (response)=> {
+      this.userSvc.login(this.user.email, this.user.password).then( response => {
           console.log(response);
 
           if(response.success){
             console.log("login succeeded");
+
+
+
             this.router.navigateByUrl('/layout/submit');
           } else {
             console.log(" login failed");
           }
+        })
+        .catch( err => {
+          console.log(err);
         });
 
     }
