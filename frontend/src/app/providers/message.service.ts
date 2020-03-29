@@ -14,7 +14,7 @@ export class MessageService {
   constructor(private http: HttpClient) { }
 
   submit(message: Message): Promise<any> {
-    return this.http.post<any>(`${this.backendApi}/messages/submit`,message)
+    return this.http.post<any>(`${this.backendApi}/messages/create`,message)
     .toPromise();
   }
 

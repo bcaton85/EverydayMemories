@@ -12,7 +12,7 @@ import { JwtStrategy } from './jwt.strategy';
     UserModule,
     PassportModule,
     JwtModule.register({
-      secret: fs.readFileSync('src/keys/private.key'),
+      secret: fs.readFileSync('src/secrets/jwt/private.key'),
       signOptions: { expiresIn: "2h"},
     })
   ],
@@ -20,3 +20,5 @@ import { JwtStrategy } from './jwt.strategy';
   exports: [AuthService]
 })
 export class AuthModule {}
+
+

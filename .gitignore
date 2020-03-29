@@ -25,4 +25,5 @@
 /frontend/yarn-debug.log*
 /frontend/yarn-error.log*
 
-/backend/src/keys
+/backend/src/secrets
+/frontend/src/secrets

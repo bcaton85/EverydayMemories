@@ -13,17 +13,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  isLoggedIn(): boolean {
-    // TODO: implement backend login call
-    
-    return true;
-  }
-
-  login(email: String, password: String): Promise<any> {
-
-    return this.http.post<any>(`${this.backendApi}/auth/login`,{email: email, password: password})
-      .toPromise();
-  }
+  
 
   register(email: String, password: String): Promise<any> {
     return this.http.post<any>(`${this.backendApi}/auth/register`,{email: email, password: password})

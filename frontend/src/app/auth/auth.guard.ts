@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivateChild } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { UserService } from '../providers/user.service';
+import { AuthService } from '../providers/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivateChild {
 
-  constructor(private router: Router, private userSvc: UserService){}
+  constructor(private router: Router, private authSvc: AuthService){}
 
-  canActivate( next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
+  canActivateChild( next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
 
-    if(!this.userSvc.isLoggedIn){
+    if( !this.authSvc.isLoggedIn() ){
       this.router.navigateByUrl('/login');
       return false;
     }

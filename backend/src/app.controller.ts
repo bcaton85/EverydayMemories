@@ -1,5 +1,5 @@
 import { AppService } from './app.service';
-import { Controller, Get, Request, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Get, Request, Response, Post, Body, UseGuards, HttpStatus } from '@nestjs/common';
 import { SimpleResponse } from 'src/shared/SimpleResponse';
 import { UserService } from './api/user/user.service';
 import { User } from 'src/interfaces/User';
@@ -14,10 +14,18 @@ export class AppController {
 
   constructor(private userSvc: UserService, private authSvc: AuthService){}
 
+  @Get('test')
+  test(){
+    return 'success';
+  }
+
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
-  async login( @Request() req): Promise<any> {
-      return this.authSvc.login(req.user);
+  async login( @Request() req, @Response() res): Promise<any> {
+
+    //TODO: replace with this option after switching over https
+    res.status(HttpStatus.OK).cookie("SESSIONID",this.authSvc.login(req.user),{httpOnly:true, secure: true}).json({success:true});
+    // res.status(HttpStatus.OK).cookie("SESSIONID",this.authSvc.login(req.user), {secure: false} ).json({success:true});
   }
 
   @UseGuards(JwtAuthGuard)

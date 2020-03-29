@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { User } from '../interfaces/user';
-import { UserService } from '../../providers/user.service';
+import { AuthService } from '../../providers/auth.service';
 
 
 @Component({
@@ -14,34 +14,21 @@ import { UserService } from '../../providers/user.service';
 export class LoginPage implements OnInit {
   user: User = {email:'',password:''};
 
-  constructor(private router: Router, private userSvc: UserService) { }
+  constructor(private router: Router, private authSvc: AuthService) { }
 
   ngOnInit() {
   }
 
-  login(form: NgForm){
+  async login(form: NgForm){
     console.log(form);
 
+    // TODO: form validation
+
     // Sort circuiting prevents login from being called on invalid form
-    if(form.valid ){
-
-      this.userSvc.login(this.user.email, this.user.password).then( response => {
-          console.log(response);
-
-          if(response.success){
-            console.log("login succeeded");
-
-
-
-            this.router.navigateByUrl('/layout/submit');
-          } else {
-            console.log(" login failed");
-          }
-        })
-        .catch( err => {
-          console.log(err);
-        });
-
+    console.log(form.valid);
+    console.log(this.authSvc.login(this.user.email, this.user.password));
+    if(form.valid && await this.authSvc.login(this.user.email, this.user.password)){
+      this.router.navigateByUrl('/layout/submit');
     }
   }
 
