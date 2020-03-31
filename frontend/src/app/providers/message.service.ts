@@ -19,7 +19,7 @@ export class MessageService {
   }
 
   getMessages(userId: String): Promise<any> {
-    return this.http.post<any>(`${this.backendApi}/messages`,{userId:userId} )
+    return this.http.get<any>(`${this.backendApi}/messages`)
     .toPromise();
   }
 

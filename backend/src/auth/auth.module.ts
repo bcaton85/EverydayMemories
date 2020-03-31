@@ -13,7 +13,7 @@ import { JwtStrategy } from './jwt.strategy';
     PassportModule,
     JwtModule.register({
       secret: fs.readFileSync('src/secrets/jwt/private.key'),
-      signOptions: { expiresIn: "2h"},
+      signOptions: { expiresIn: '2hr' }
     })
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],

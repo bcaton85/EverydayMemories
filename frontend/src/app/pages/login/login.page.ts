@@ -23,10 +23,7 @@ export class LoginPage implements OnInit {
     console.log(form);
 
     // TODO: form validation
-
-    // Sort circuiting prevents login from being called on invalid form
-    console.log(form.valid);
-    console.log(this.authSvc.login(this.user.email, this.user.password));
+    console.log(await this.authSvc.login(this.user.email, this.user.password));
     if(form.valid && await this.authSvc.login(this.user.email, this.user.password)){
       this.router.navigateByUrl('/layout/submit');
     }

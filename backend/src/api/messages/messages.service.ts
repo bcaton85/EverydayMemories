@@ -12,8 +12,8 @@ export class MessagesService {
         return this.messageModel.create(message);
     }
 
-    async findAll(userId: string): Promise<Message[]>{
-        return this.messageModel.find( {userId: userId }).exec();
+    async findAll(user_id: string): Promise<Message[]>{
+        return this.messageModel.find( { user_id: user_id }).exec();
     }
 
 }

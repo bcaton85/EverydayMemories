@@ -23,26 +23,27 @@ export class AppController {
   @Post('auth/login')
   async login( @Request() req, @Response() res): Promise<any> {
 
-    //TODO: replace with this option after switching over https
-    res.status(HttpStatus.OK).cookie("SESSIONID",this.authSvc.login(req.user),{httpOnly:true, secure: true}).json({success:true});
-    // res.status(HttpStatus.OK).cookie("SESSIONID",this.authSvc.login(req.user), {secure: false} ).json({success:true});
+    let accessToken: string = await this.authSvc.login(req.user);
+
+    // Setting secure to false since http connection only exists inside the cluster
+    // https connectioned is proxied through the angular service
+    // May change in future
+    res.status(HttpStatus.OK)
+      .cookie("SESSIONID", accessToken, {httpOnly:true, secure: false})
+      .json({success:true});
   }
 
   @UseGuards(JwtAuthGuard)
-  @Post('auth/register')
-  async register(@Body() user: User): Promise<any> {
-      let responseBody: SimpleResponse = { success: true }
-
-      return this.userSvc.create(user).then( res => {
-          console.log(res);
-          return responseBody;
-      })
-      .catch( err => {
-          console.log(err);
-          responseBody.success = false;
-          return responseBody;
-      });
+  @Get('auth/isLoggedIn')
+  isLoggedIn( @Response() res){
+    res.status(HttpStatus.OK).send({success:true});
   }
 
-  
+  @UseGuards(JwtAuthGuard)
+  @Get('auth/logout')
+  logout( @Request() req, @Response() res): any {
+    res.clearCookie("SESSIONID");
+    res.status(HttpStatus.OK).send({success:true});
+  }
+
 }

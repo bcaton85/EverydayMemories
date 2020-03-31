@@ -28,6 +28,7 @@
     "@nestjs/passport": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
     "@types/mongoose": "^5.7.7",
+    "cookie-parser": "^1.4.5",
     "helmet": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",

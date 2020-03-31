@@ -11,9 +11,9 @@ export class AuthGuard implements CanActivateChild {
 
   constructor(private router: Router, private authSvc: AuthService){}
 
-  canActivateChild( next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
-
-    if( !this.authSvc.isLoggedIn() ){
+  async canActivateChild( next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean>  {
+    let isLoggedIn: boolean = await this.authSvc.isLoggedIn();
+    if( !isLoggedIn ){
       this.router.navigateByUrl('/login');
       return false;
     }

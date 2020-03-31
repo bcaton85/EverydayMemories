@@ -2,6 +2,6 @@ import { Document } from 'mongoose';
 
 export class Message extends Document {
     messageText: string;
-    userId: string;
+    user_id: string;
     submissionDate: string;
 }
