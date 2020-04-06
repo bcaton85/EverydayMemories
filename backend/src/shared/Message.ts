@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
 
-export class Message extends Document {
+export class Message {
     messageText: string;
-    user_id: string;
+    userID: string;
     submissionDate: string;
 }

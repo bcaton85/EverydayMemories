@@ -20,7 +20,6 @@ export class SubmitPage implements OnInit {
   submit(form: NgForm){
     console.log(form.valid);
 
-    this.message.userId = '0';
     this.message.submissionDate = moment().utc().toISOString();
 
     this.messageSvc.submit(this.message).then((response)=>{

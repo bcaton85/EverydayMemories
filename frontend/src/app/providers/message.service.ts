@@ -18,7 +18,7 @@ export class MessageService {
     .toPromise();
   }
 
-  getMessages(userId: String): Promise<any> {
+  getMessages(): Promise<any> {
     return this.http.get<any>(`${this.backendApi}/messages`)
     .toPromise();
   }

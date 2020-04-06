@@ -1,19 +1,18 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { Message } from 'src/interfaces/Message';
-import { User } from 'src/interfaces/User';
+import { InjectModel } from '@nestjs/sequelize';
+import { MessageModel } from 'src/models/Message.model';
+import { Message } from 'src/shared/Message';
 
 @Injectable()
 export class MessagesService {
-    constructor(@InjectModel('Message') private messageModel: Model<Message>){}
+    constructor(@InjectModel(MessageModel) private messageModel: typeof MessageModel){}
 
-    async create(message: Message): Promise<Message> {
+    async create(message: Message): Promise<MessageModel> {
         return this.messageModel.create(message);
     }
 
-    async findAll(user_id: string): Promise<Message[]>{
-        return this.messageModel.find( { user_id: user_id }).exec();
+    async findAll(userID: string): Promise<MessageModel[]>{
+        return this.messageModel.findAll( { where:{ userID: userID} } );
     }
 
 }

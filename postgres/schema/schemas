@@ -1,0 +1,20 @@
+CREATE TABLE "AppUsers" (
+    "userID"  SERIAL PRIMARY KEY,
+    "email" varchar(355) UNIQUE NOT NULL,
+    "password" varchar(255) NOT NULL,
+    "createdAt" TIMESTAMP NOT NULL,
+    "updatedAt" TIMESTAMP NOT NULL,
+    "lastLogin" TIMESTAMP
+);
+
+CREATE TABLE "Messages" (
+   "messageID" serial PRIMARY KEY,
+   "userID" integer references "AppUsers"("userID"),
+   "messageText" varchar(500),
+   "submissionDate" timestamp,
+    "createdAt" TIMESTAMP NOT NULL,
+    "updatedAt" TIMESTAMP NOT NULL
+);
+
+insert into "AppUsers" values (0,'test@email.com','test',current_timestamp,current_timestamp,current_timestamp);
+insert into "Messages" values (0,0,'this is a sample message',current_timestamp,current_timestamp,current_timestamp);

@@ -1,5 +1,13 @@
+
 <ion-content>
   <ion-grid>
+    <ion-row>
+      <ion-col size="4" offset="4">
+        <ion-title class="heading">
+          <div>Everyday</div><div>Memories</div>
+        </ion-title>
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col size="4" offset="4" >
         <form #loginForm="ngForm" novalidate>
@@ -14,7 +22,7 @@
           </ion-item>
           <ion-item>
               <ion-label>Password</ion-label>
-              <ion-input type="text" [(ngModel)]="user.password" name="password" required></ion-input>
+              <ion-input type="password" [(ngModel)]="user.password" name="password" required></ion-input>
           </ion-item>
           <ion-button color="light" type="submit" block (click)="login(loginForm)">Login</ion-button>
           <p>Not a member? <a [routerLink]="['/register']" >Sign up</a></p>

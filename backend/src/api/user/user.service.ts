@@ -1,20 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { User } from '../../interfaces/User';
+import { InjectModel } from '@nestjs/sequelize';
+import { AppUserModel } from 'src/models/AppUser.model';
+import { AppUser } from 'src/shared/AppUser';
 
 
 
 @Injectable()
 export class UserService {
 
-    constructor(@InjectModel('User') private userModel: Model<User>){}
+    constructor(@InjectModel(AppUserModel) private userModel: typeof AppUserModel){}
 
-    async findOne(email: string): Promise<User> {
-        return this.userModel.findOne({ email: email }).exec();
+    async findOne(email: string): Promise<AppUserModel> {
+        return this.userModel.findOne({
+            where: {
+                email: email
+            }
+        });
     }
 
-    async create(user: User): Promise<User> {
+    async create(user: AppUser): Promise<AppUserModel> {
+        console.log(user);
         return this.userModel.create(user);
     }
 

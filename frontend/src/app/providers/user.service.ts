@@ -13,8 +13,6 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  
-
   register(email: String, password: String): Promise<any> {
     return this.http.post<any>(`${this.backendApi}/auth/register`,{email: email, password: password})
     .toPromise();

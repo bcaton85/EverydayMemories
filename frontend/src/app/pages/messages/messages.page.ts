@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MessageService} from '../../providers/message.service';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { Message } from 'src/app/pages/interfaces/message';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-messages',
@@ -20,9 +21,14 @@ export class MessagesPage implements OnInit {
   }
   
   getMessages(){
-    this.messageSvc.getMessages("0").then((response)=>{
-      this.messages = response.messages;
-      console.log(response);
+    this.messageSvc.getMessages().then((response)=>{
+
+      this.messages = response.messages.map( (message: Message) => {
+        console.log(message);
+        message.submissionDate = moment(message.submissionDate).utcOffset(new Date().getTimezoneOffset()).format('MM/DD/YYYY hh:mm a');
+        return message;
+      });
+      console.log(this.messages);
     })
     .catch((error)=>{
       console.log(error);

@@ -1,5 +1,5 @@
 export interface Message {
-    userId: String,
-    messageText: String,
-    submissionDate: String
+    userId: string,
+    messageText: string,
+    submissionDate: string
 }
