@@ -3,6 +3,9 @@ import { NgForm } from '@angular/forms';
 import { Message } from '../interfaces/message';
 import { MessageService } from '../../providers/message.service';
 import * as moment from 'moment';
+import { ToastController } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-submit',
@@ -13,7 +16,7 @@ export class SubmitPage implements OnInit {
 
   private message: Message = {userId: '',messageText: '',submissionDate:''};
 
-  constructor(private messageSvc: MessageService) { }
+  constructor(private messageSvc: MessageService, public toastController: ToastController) { }
 
   ngOnInit() {}
 
@@ -25,15 +28,26 @@ export class SubmitPage implements OnInit {
     this.messageSvc.submit(this.message).then((response)=>{
       console.log(response);
       if(response.success){
-        //TODO: implement success submission for user
+        this.presentToast("Message saved","success");
+        this.message.messageText = "";
       } else {
-        //TODO: implement failure submission for user
+        this.presentToast("Unable to save message, please wait and try again","danger");
       }
     })
     .catch((error)=>{
       console.log(error);
     });
 
+  }
+
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      position: 'top',
+      message: message,
+      color: color,
+      duration: 2000
+    });
+    toast.present();
   }
 
 }
