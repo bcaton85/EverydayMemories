@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "webview-blank",
+  "appId": "com.caton.everydaymemories",
+  "appName": "everyday-memories",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

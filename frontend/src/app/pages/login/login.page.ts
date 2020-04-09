@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { User } from '../interfaces/user';
 import { AuthService } from '../../providers/auth.service';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { AuthService } from '../../providers/auth.service';
 export class LoginPage implements OnInit {
   user: User = {email:'',password:''};
 
-  constructor(private router: Router, private authSvc: AuthService) { }
+  constructor(private router: Router, private authSvc: AuthService, public toastController: ToastController) { }
 
   ngOnInit() {
   }
@@ -23,10 +24,23 @@ export class LoginPage implements OnInit {
     console.log(form);
 
     // TODO: form validation
-    console.log(await this.authSvc.login(this.user.email, this.user.password));
     if(form.valid && await this.authSvc.login(this.user.email, this.user.password)){
+      console.log('login succeeded');
       this.router.navigateByUrl('/layout/submit');
+    } else {
+      console.log('login failed');
+      this.presentToast('Login failed','danger');
     }
+  }
+
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      position: 'top',
+      message: message,
+      color: color,
+      duration: 2000
+    });
+    toast.present();
   }
 
 }
