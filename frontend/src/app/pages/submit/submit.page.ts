@@ -4,7 +4,8 @@ import { Message } from '../interfaces/message';
 import { MessageService } from '../../providers/message.service';
 import * as moment from 'moment';
 import { ToastController } from '@ionic/angular';
-
+import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -13,20 +14,26 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./submit.page.scss'],
 })
 export class SubmitPage implements OnInit {
+  photo: SafeResourceUrl;
+  photoDataUrl: string;
+  message: Message = {userId: '',messageText: '',submissionDate:''};
 
-  private message: Message = {userId: '',messageText: '',submissionDate:''};
-
-  constructor(private messageSvc: MessageService, public toastController: ToastController) { }
+  constructor(private sanitizer: DomSanitizer, private messageSvc: MessageService, public toastController: ToastController) { }
 
   ngOnInit() {}
 
-  submit(form: NgForm){
-    console.log(form.valid);
+  async submit(form: NgForm){
 
     this.message.submissionDate = moment().utc().toISOString();
+    const blob: Blob = await fetch(this.photoDataUrl).then(photo => photo.blob() );
 
-    this.messageSvc.submit(this.message).then((response)=>{
-      console.log(response);
+    
+
+    const formData: FormData = new FormData();
+    formData.append('message',JSON.stringify(this.message));
+    formData.append('image', blob ,'user-image');
+
+    this.messageSvc.submit(formData).then((response)=>{
       if(response.success){
         this.presentToast("Message saved","success");
         this.message.messageText = "";
@@ -38,6 +45,22 @@ export class SubmitPage implements OnInit {
       console.log(error);
     });
 
+  }
+
+  async takePicture(){
+    const image = await Plugins.Camera.getPhoto({
+      quality: 100,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera
+    });
+
+    // console.log(image.dataUrl);
+    console.log(image);
+    this.photoDataUrl = image.dataUrl;
+
+    // TODO: poses possible security risk, investigate and resolve
+    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
   }
 
   async presentToast(message: string, color: string) {

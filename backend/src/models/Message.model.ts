@@ -1,5 +1,6 @@
 import { Column, Model, Table, PrimaryKey, ForeignKey, AutoIncrement, NotNull} from 'sequelize-typescript';
 import { AppUserModel } from './AppUser.model';
+import { ExecSyncOptionsWithBufferEncoding } from 'child_process';
 
 //TODO: enable timestamps at a later date
 @Table({
@@ -21,5 +22,8 @@ export class MessageModel extends Model<MessageModel> {
 
     @Column
     submissionDate: Date;
+
+    @Column
+    photoPath: string;
 
 }

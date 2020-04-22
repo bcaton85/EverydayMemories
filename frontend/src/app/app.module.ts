@@ -9,13 +9,18 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { ServiceWorkerModule, SwRegistrationOptions } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule, AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', {enabled: true})],
+  imports: [BrowserModule, 
+    IonicModule.forRoot(), 
+    HttpClientModule, 
+    AppRoutingModule, 
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: true,registrationStrategy:'registerWhenStable'})
+  ],
   providers: [
     StatusBar,
     SplashScreen,

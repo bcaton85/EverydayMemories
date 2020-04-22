@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MessageService} from '../../providers/message.service';
 import { Message } from 'src/app/pages/interfaces/message';
 import * as moment from 'moment';
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from '../modal/modal.page';
 
 @Component({
   selector: 'app-messages',
@@ -12,7 +14,7 @@ export class MessagesPage implements OnInit {
 
   messages: Array<Message> = [];
 
-  constructor(private messageSvc: MessageService) { }
+  constructor(public modalController: ModalController, private messageSvc: MessageService) { }
 
   ngOnInit() {}
   
@@ -33,6 +35,17 @@ export class MessagesPage implements OnInit {
     .catch((error)=>{
       console.log(error);
     });
+  }
+
+  async presentModal(photoPath: string) {
+    console.log('clicked');
+    const modal = await this.modalController.create({
+      component: ModalPage,
+      componentProps: {
+        photoPath: photoPath
+      }
+    });
+    return await modal.present();
   }
 
 }

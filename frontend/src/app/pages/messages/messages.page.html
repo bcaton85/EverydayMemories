@@ -7,7 +7,9 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let message of messages">
-      <p>{{message.submissionDate}} | {{message.messageText}}</p>
+      <div (click)="presentModal(message.photoPath)" >
+        <img  style="height: 200px; width: 320px;" src="api/messages/image/{{message.photoPath}}" /><p>{{message.submissionDate}} | {{message.messageText}}</p>
+      </div>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Everyday Memories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row offset-lg="4" >
+      <ion-col size-lg="4" offset-lg="4" size-sm="10" offset-sm="2" size-md="8" offset-md="4">
+        <ion-item-group>
+           <ion-item>
+              <round-progress [responsive]="true" [color]="'#0069F7'" [background]="'#eaeaea'" [duration]="1300" [animation]="'easeInOutQuart'" [current]="33" [max]="100" [rounded]="true">
+              </round-progress>
+              <div class="current" style="text-align: center; top: 50%; bottom: auto; left: 50%; transform: translateY(-50%) translateX(-53%); font-size: 3em;">5/31 Days</div>
+          </ion-item>
+          <ion-item>
+            <ion-label>Available next</ion-label>
+            <p>1/2/2020</p>
+          </ion-item>
+        </ion-item-group>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -12,6 +12,7 @@ CREATE TABLE "Messages" (
    "userID" integer references "AppUsers"("userID"),
    "messageText" varchar(500),
    "submissionDate" timestamp,
+   "photoPath" varchar(32) ,
     "createdAt" TIMESTAMP NOT NULL,
     "updatedAt" TIMESTAMP NOT NULL
 );

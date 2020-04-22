@@ -9,6 +9,15 @@ const routes: Routes = [
     component: LayoutPage,
     children:[
       {
+        path:'home',
+        children:[
+          {
+            path:'',
+            loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
+          }
+        ]
+      },
+      {
         path:'submit',
         children:[
           {

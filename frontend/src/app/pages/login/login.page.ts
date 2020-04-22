@@ -24,6 +24,7 @@ export class LoginPage implements OnInit {
     console.log(form);
 
     // TODO: form validation
+
     if(form.valid && await this.authSvc.login(this.user.email, this.user.password)){
       console.log('login succeeded');
       this.router.navigateByUrl('/layout/submit');

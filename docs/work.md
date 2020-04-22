@@ -1,6 +1,8 @@
 # TODO
+- add install link on home screen
+- set up modal for images
+- set up remote debugging with chrome inspect devices
 - get appropriate logging for frontend and backend
-- implement messages times
 - write basic unit tests
 
 #### `frontend`

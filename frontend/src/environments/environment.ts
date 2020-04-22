@@ -4,9 +4,8 @@
 
 export const environment = {
   production: false,
-  backendApi: "https://192.168.1.6:8100/api"
-};
-
+  backendApi: "http://localhost:8100/api"
+}
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

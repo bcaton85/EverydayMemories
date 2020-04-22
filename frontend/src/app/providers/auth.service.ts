@@ -26,14 +26,16 @@ export class AuthService {
     });
   }
 
-  async login(email: String, password: String): Promise<boolean> {
+  async login(email: String, password: String): Promise<string> {
 
     return await this.http.post<any>(`${this.backendApi}/auth/login`,{email: email, password: password})
       .toPromise().then(res => {
         console.log(res);
         return res.success;
       })
-      .catch(err => {console.log(err)});
+      .catch(err => {
+        console.log(err);
+      });
 
   }
 

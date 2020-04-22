@@ -13,7 +13,7 @@ export class MessageService {
 
   constructor(private http: HttpClient) { }
 
-  submit(message: Message): Promise<any> {
+  submit(message: FormData): Promise<any> {
     return this.http.post<any>(`${this.backendApi}/messages/create`,message)
     .toPromise();
   }
