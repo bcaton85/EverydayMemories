@@ -22,7 +22,8 @@ export class MessagesService {
         // todo: not the exact date, should be revised to account for timezones
         let currDate = moment().startOf('month').add(3, 'day').format('YYYY-MM-DD');
         console.log(currDate);
-        return this.messageModel.findAll( { where:{ userID: userID, submissionDate: { [Op.lt]: currDate } } } );
+        return this.messageModel.findAll( { where:{ userID: userID} } );
+        // return this.messageModel.findAll( { where:{ userID: userID, submissionDate: { [Op.lt]: currDate } } } );
     }
 
 }

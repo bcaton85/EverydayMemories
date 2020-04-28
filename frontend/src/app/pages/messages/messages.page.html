@@ -6,6 +6,9 @@
 
 <ion-content>
   <ion-list>
+    <ion-item *ngIf="messages.length == 0" >
+      No Messages yet
+    </ion-item>
     <ion-item *ngFor="let message of messages">
       <div (click)="presentModal(message.photoPath)" >
         <img  style="height: 200px; width: 320px;" src="api/messages/image/{{message.photoPath}}" /><p>{{message.submissionDate}} | {{message.messageText}}</p>

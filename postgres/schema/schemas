@@ -18,4 +18,4 @@ CREATE TABLE "Messages" (
 );
 
 insert into "AppUsers" values (0,'test@email.com','test',current_timestamp,current_timestamp,current_timestamp);
-insert into "Messages" values (0,0,'this is a sample message',current_timestamp,current_timestamp,current_timestamp);
+insert into "Messages" values (0,0,'this is a sample message',current_timestamp,'2Mu7tTqZXPRHEQ',current_timestamp,current_timestamp);

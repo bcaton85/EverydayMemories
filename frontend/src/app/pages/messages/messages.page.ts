@@ -48,4 +48,10 @@ export class MessagesPage implements OnInit {
     return await modal.present();
   }
 
+  dismiss(){
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+  }
+
 }

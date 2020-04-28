@@ -1,38 +1,31 @@
 const express = require('express');
 const app = express();
-const port = 8100;
+const port = process.env.PORT || 8100;
 const fs = require('fs');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 var https = require('https');
 
-var privateKey  = fs.readFileSync('src/secrets/https/server.key', 'utf8');
-var certificate = fs.readFileSync('src/secrets/https/server.crt', 'utf8');
-
+var keycertRoot = process.env == "production" ? "" : "src/secrets/https";
+var privateKey  = fs.readFileSync(`${keycertRoot}/server.key`, 'utf8');
+var certificate = fs.readFileSync(`${keycertRoot}/server.crt`, 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 
-// app.use(function(error, req, res, next) {
-//     console.log(error); 
-//     next();
-// });
-
-// app.use(function(req, res, next) {
-//     console.log(req);
-//     next();
-// });
-
+var api = process.env.NODE_ENV == "production" ? "https://everyday-memories-backend.herokuapp.com/" : "http://localhost:3000";
+console.log(`environment: ${process.env.NODE_ENV}`);
+console.log(`Routing targeting: ${api}`);
 const proxy = createProxyMiddleware({
-    target: 'http://localhost:3000',
+    target: "https://everyday-memories-backend.herokuapp.com",
     pathRewrite: {
         '^/api':''
-    }
+    },
+    logLevel: 'debug',
+    changeOrigin: true
 });
 app.use('/api',proxy);
 
 app.use(express.static('www'));
 
-
-app.get('/', (req, res) => res.sendFile('/Users/brandoncaton/projects/Memories/frontend/www/index.html'));
-
-https.createServer(credentials,app).listen(port,()=>{console.log("listening on 8100")});
-
-// app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+var staticRoot = process.env == "production" ? "/usr/src/app" : "/Users/brandoncaton/projects/Memories/frontend";
+app.get('/', (req, res) => res.sendFile(`${staticRoot}/www/index.html`));
+app.listen(port, () => console.log(`Frontend listening at http://localhost:${port}`));
+// https.createServer(credentials,app).listen(port,()=>{console.log(`listening on ${port}`)});

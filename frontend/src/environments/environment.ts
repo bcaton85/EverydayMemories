@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendApi: "http://localhost:8100/api"
+  backendApi: "https://localhost:8100/api"
 }
 /*
  * For easier debugging in development mode, you can import the following file

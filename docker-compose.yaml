@@ -4,11 +4,21 @@ services:
     build:
       context: ./frontend
     ports:
-      - "3001:8100"
-  backend-api:
+      - "8100:8100"
+  backend:
     build:
-      context: ./datastore
+      context: ./backend
     ports:
       - "3000:3000"
+  database:
+    image: postgres:12.2
+    ports:
+      - "5432:5432"
+    volumes:
+      - /Users/brandoncaton/projects/volumes/postgres:/var/lib/postgresql/data
+    environment: 
+      POSTGRES_PASSWORD: password
+      
+    
   
   

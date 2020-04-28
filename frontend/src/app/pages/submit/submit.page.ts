@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Message } from '../interfaces/message';
 import { MessageService } from '../../providers/message.service';
 import * as moment from 'moment';
-import { ToastController } from '@ionic/angular';
+import { ToastController, Platform } from '@ionic/angular';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
@@ -17,10 +17,15 @@ export class SubmitPage implements OnInit {
   photo: SafeResourceUrl;
   photoDataUrl: string;
   message: Message = {userId: '',messageText: '',submissionDate:''};
+  isPwa: boolean;
 
-  constructor(private sanitizer: DomSanitizer, private messageSvc: MessageService, public toastController: ToastController) { }
+  constructor(private platform: Platform, private sanitizer: DomSanitizer, private messageSvc: MessageService, public toastController: ToastController) { 
+    this.isPwa = this.platform.is('pwa');
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   async submit(form: NgForm){
 

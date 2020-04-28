@@ -6,9 +6,10 @@
 
 <ion-content>
   <form #submitForm="ngForm" novalidate>
+    
   <ion-grid>
-    <ion-row>
-      <ion-col style="justify-content: center;" size="6" offset="3">
+    <ion-row justify-content-center>
+      <ion-col size="6" offset="3">
         <ion-header>
           <ion-title>
             What made your day?
@@ -16,23 +17,28 @@
         </ion-header> 
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row justify-content-center>
       <ion-col size="6" offset="3">
-          <img [src]="photo" >
+          <img *ngIf="photoDataUrl" [src]="photo" >
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row justify-content-center>
       <ion-col size="6" offset="3">
           <div ion-fixed style="top: 0; left: 0; right: 0; bottom: 0;">
             <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-              <ion-fab-button (click)="takePicture()">
+              <ion-fab-button *ngIf="isPwa">
+                <!-- <label for="upload-photo"><ion-icon name="camera"></ion-icon> -->
+                  <input id="upload-photo"  type="file" accept="image/*" capture="camera" />
+                <!-- </label> -->
+              </ion-fab-button>
+              <ion-fab-button *ngIf="!isPwa" (click)="takePicture()">
                 <ion-icon name="camera"></ion-icon>
               </ion-fab-button>
             </ion-fab>
           </div>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row justify-content-center>
       <ion-col style="justify-content: center;" size="6" offset="3">
           <ion-item>
               <ion-label>Message</ion-label>

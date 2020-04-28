@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendApi: "http://localhost:8100/api"
+  backendApi: "https://everyday-memories-frontend.herokuapp.com/api"
 };

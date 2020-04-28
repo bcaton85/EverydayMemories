@@ -7,14 +7,19 @@ import * as fs from 'fs';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { AuthController } from './auth.controller';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
     UserModule,
     PassportModule,
-    JwtModule.register({
-      secret: fs.readFileSync('src/secrets/jwt/private.key'),
-      signOptions: { expiresIn: '2hr' }
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        secret: fs.readFileSync(configService.get<string>('P_KEY_PATH')),
+        signOptions: { expiresIn: '2hr' }
+      }),
+      inject: [ConfigService],
     })
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
@@ -22,5 +27,3 @@ import { AuthController } from './auth.controller';
   controllers: [AuthController]
 })
 export class AuthModule {}
-
-

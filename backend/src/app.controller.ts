@@ -9,5 +9,9 @@ export class AppController {
   test(){
     return 'success';
   }
+  @Get()
+  testRoot(){
+    return 'success';
+  }
 
 }
